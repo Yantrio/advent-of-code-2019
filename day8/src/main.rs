@@ -58,8 +58,9 @@ fn calculate_colours(s: &Screen) -> Layer {
         .map(|idx| {
             s.iter()
                 .map(|l| l[idx])
-                .filter(|p| *p != 2)
-                .collect::<Layer>()[0]
+                .filter(|&p| p != 2)
+                .nth(0)
+                .expect("Failed to read pixel")
         })
         .collect()
 }

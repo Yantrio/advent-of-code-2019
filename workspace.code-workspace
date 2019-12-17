@@ -30,9 +30,12 @@
 		{
 			"path": "day9"
 		},
-                {
-                        "path": "day10"
-                }
+		{
+			"path": "day10"
+		},
+		{
+			"path": "day11"
+		}
 	],
 	"settings": {}
 }
