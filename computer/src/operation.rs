@@ -67,10 +67,12 @@ impl Operation {
     }
 
     pub fn from_computer(computer: &Computer) -> Operation {
-        let raw_opcode = computer.mem[computer.ip];
+        let raw_opcode = computer.mem.memory[computer.mem.instruction_pointer];
         let opcode = OpCode::try_from((raw_opcode % 100) as i32).expect("Failed to parse opcode");
         let length = Operation::get_length(&opcode);
-        let data = computer.mem[computer.ip..computer.ip + length].to_vec();
+        let data = computer.mem.memory
+            [computer.mem.instruction_pointer..computer.mem.instruction_pointer + length]
+            .to_vec();
         Operation {
             op_code: opcode,
             modes: (
